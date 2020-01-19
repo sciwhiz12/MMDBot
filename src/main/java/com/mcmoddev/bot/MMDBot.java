@@ -12,6 +12,7 @@ import com.mcmoddev.bot.commands.search.CmdDuckDuckGo;
 import com.mcmoddev.bot.commands.search.CmdGoogle;
 import com.mcmoddev.bot.commands.search.CmdLmgtfy;
 import com.mcmoddev.bot.commands.staff.CmdUser;
+import com.mcmoddev.bot.commands.locked.moderation.CmdOldChannels;
 import com.mcmoddev.bot.events.MiscEvents;
 import com.mcmoddev.bot.events.users.*;
 import com.mcmoddev.bot.misc.BotConfig;
@@ -129,6 +130,7 @@ public final class MMDBot {
 			commandBuilder.addCommand(new CmdEventsHelp());
 			commandBuilder.addCommand(new CmdToggleMcServerPings());
 			commandBuilder.addCommand(new CmdForgeVersion());
+			commandBuilder.addCommand(new CmdOldChannels());
 			commandBuilder.setHelpWord("help");
 
 			final CommandClient commandListener = commandBuilder.build();
