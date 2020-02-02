@@ -3,15 +3,12 @@ package com.mcmoddev.bot.commands.locked.moderation;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.mcmoddev.bot.MMDBot;
+import com.mcmoddev.bot.misc.OldChannelsHelper;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.awt.*;
-import java.time.OffsetDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,16 +66,8 @@ public final class CmdOldChannels extends Command {
             if (channel.getParent() != null && channelBlacklist.contains(channel.getParent().getName().replace(' ', '-'))) {
                 continue;
             }
-            final MessageHistory history = channel.getHistory();
-            List<Message> latestMessages = history.retrievePast(1).complete();
-            if (latestMessages.size() > 0) {
-                while (latestMessages.get(0).isWebhookMessage()) {
-                    latestMessages = history.retrievePast(1).complete();
-                }
-            }
-            final long daysSinceLastMessage = latestMessages.size() > 0 ?
-                    ChronoUnit.DAYS.between(latestMessages.get(latestMessages.size()-1).getTimeCreated(), OffsetDateTime.now()) :
-                    -1;
+            final long daysSinceLastMessage = OldChannelsHelper.getLastMessageTime(channel);
+
             if (daysSinceLastMessage > dayThreshold) {
                 embed.addField("#" + channel.getName(), String.valueOf(daysSinceLastMessage), true);
             } if (daysSinceLastMessage == -1) {

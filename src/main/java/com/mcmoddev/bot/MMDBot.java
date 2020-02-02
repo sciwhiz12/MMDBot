@@ -58,13 +58,22 @@ public final class MMDBot {
 	private static BotConfig config; // = new BotConfig("mmdbot_config.json");
 
 	/**
-	 * @return The Bots configuration.
+	 *
 	 */
-	public static BotConfig getConfig() {
-		return config;
-	}
+	private static JDA jda;
 
-	/**
+    /**
+     *
+     * @return The Bots configuration.
+     */
+    public static BotConfig getConfig() {
+    	return config;
+    }
+
+    public static JDA getJda() {
+    	return jda;
+    }
+    /**
 	 *
 	 */
 	private MMDBot() {
