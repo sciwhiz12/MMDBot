@@ -1,4 +1,4 @@
-package com.mcmoddev.bot.commands.locked.moderation;
+package com.mcmoddev.bot.commands.staff;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -56,7 +56,7 @@ public final class CmdOldChannels extends Command {
 
         final List<TextChannel> channelList = guild.getTextChannels();
 
-        embed.setTitle("Old channels");
+        embed.setTitle("Days since last message in channel:");
         embed.setColor(Color.YELLOW);
 
         for (TextChannel channel : channelList) {
