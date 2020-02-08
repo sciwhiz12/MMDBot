@@ -16,5 +16,12 @@ public class TaskScheduler {
 			MMDBot.LOGGER.error("Unable to schedule job Forge Update Notifier", e);
 			e.printStackTrace();
 		}
+
+		try {
+			// Check every 12 hours
+			timer.scheduleAtFixedRate(new ChannelMessageChecker(), 0, 1000 * 60 * 60 * 12);
+		} catch (Exception e) {
+			MMDBot.LOGGER.error("Unable to schedule job Channel Message Checker", e);
+		}
 	}
 }
