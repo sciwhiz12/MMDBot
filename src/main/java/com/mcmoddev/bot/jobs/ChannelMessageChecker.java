@@ -19,7 +19,7 @@ public class ChannelMessageChecker extends TimerTask {
 
 	public ChannelMessageChecker() {
 		this.guildId = MMDBot.getConfig().getGuildID();
-		this.guild = MMDBot.getJda().getGuildById(MMDBot.getConfig().getGuildID());
+		this.guild = MMDBot.getInstance().getGuildById(MMDBot.getConfig().getGuildID());
 	}
 
 	@Override
