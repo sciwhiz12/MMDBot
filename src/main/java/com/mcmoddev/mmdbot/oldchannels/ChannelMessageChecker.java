@@ -1,6 +1,6 @@
 package com.mcmoddev.mmdbot.oldchannels;
 
-import com.mcmoddev.bot.MMDBot;
+import com.mcmoddev.mmdbot.MMDBot;
 import com.mcmoddev.mmdbot.oldchannels.OldChannelsHelper;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;

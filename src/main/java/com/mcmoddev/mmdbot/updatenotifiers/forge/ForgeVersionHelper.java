@@ -2,6 +2,7 @@ package com.mcmoddev.mmdbot.updatenotifiers.forge;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class ForgeVersionHelper {
         return new MinecraftForgeVersion(latest, versions.get(latest));
     }
 
-    private static InputStreamReader openUrl() throws Exception {
+    private static InputStreamReader openUrl() throws IOException {
         URL urlObj = new URL(VERSION_URL);
 
         return new InputStreamReader(urlObj.openStream());

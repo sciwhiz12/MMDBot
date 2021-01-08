@@ -48,7 +48,7 @@ public final class CmdOldChannels extends Command {
         List<String> blacklist;
 
         if (args.size() > 1) {
-            blacklist = new ArrayList<>(args.);
+            blacklist = new ArrayList<>(args);
             blacklist.remove(0);
         } else {
             blacklist = new ArrayList<>();
