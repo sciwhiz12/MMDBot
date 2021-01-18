@@ -1,15 +1,17 @@
 package com.mcmoddev.mmdbot.core;
 
 import com.mcmoddev.mmdbot.MMDBot;
-import com.mcmoddev.mmdbot.oldchannels.ChannelMessageChecker;
 import com.mcmoddev.mmdbot.updatenotifiers.fabric.FabricApiUpdateNotifier;
 import com.mcmoddev.mmdbot.updatenotifiers.forge.ForgeUpdateNotifier;
 import com.mcmoddev.mmdbot.updatenotifiers.game.MinecraftUpdateNotifier;
 
 import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class TaskScheduler {
     public static Timer timer = new Timer();
+    public static ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
 
     public static void init() {
         //Check each every 3 hours.
@@ -21,6 +23,5 @@ public class TaskScheduler {
         }
         timer.scheduleAtFixedRate(new MinecraftUpdateNotifier(), 0, 1000 * 60 * 60 * 3);
         timer.scheduleAtFixedRate(new FabricApiUpdateNotifier(), 0, 1000 * 60 * 60 * 3);
-        timer.scheduleAtFixedRate(new ChannelMessageChecker(), 0, 1000 * 60 * 60 * 24);
     }
 }
