@@ -1,34 +1,33 @@
 package com.mcmoddev.mmdbot.oldchannels;
 
-import net.dv8tion.jda.api.entities.TextChannel;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class OldChannelsHelper {
+    public static final long NO_MESSAGE_FOUND = -1;
 
-	private static final Map<TextChannel, Long> channelLastMessageMap = new HashMap<>();
+    private static final Map<Long, Long> channelLastMessageMap = new HashMap<>();
 
-	private static boolean ready = false;
+    private static volatile boolean ready = false;
 
-	public static long getLastMessageTime(final TextChannel channel) {
-		return channelLastMessageMap.getOrDefault(channel, -1L);
-	}
+    public static long getLastMessageTime(final long channelID) {
+        return channelLastMessageMap.getOrDefault(channelID, NO_MESSAGE_FOUND);
+    }
 
-	public static void clear() {
-		channelLastMessageMap.clear();
-		setReady(false);
-	}
+    public static void clear() {
+        channelLastMessageMap.clear();
+        setReady(false);
+    }
 
-	public static void put(final TextChannel channel, final long timeSinceLastMessage) {
-		channelLastMessageMap.put(channel, timeSinceLastMessage);
-	}
+    public static void put(final long channelID, final long timeSinceLastMessage) {
+        channelLastMessageMap.put(channelID, timeSinceLastMessage);
+    }
 
-	public static boolean isReady() {
-		return ready;
-	}
+    public static boolean isReady() {
+        return ready;
+    }
 
-	public static void setReady(boolean ready) {
-		OldChannelsHelper.ready = ready;
-	}
+    public static void setReady(boolean ready) {
+        OldChannelsHelper.ready = ready;
+    }
 }

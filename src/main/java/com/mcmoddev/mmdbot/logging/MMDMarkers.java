@@ -39,4 +39,13 @@ public class MMDMarkers {
      * @see com.mcmoddev.mmdbot.commands.staff.CmdUnmute
      */
     public static final Marker MUTING = MarkerFactory.getMarker("Muting");
+
+    /**
+     * The {@link Marker} for the old channels system.
+     *
+     * @see com.mcmoddev.mmdbot.oldchannels.ChannelMessageChecker
+     * @see com.mcmoddev.mmdbot.oldchannels.OldChannelsHelper
+     * @see com.mcmoddev.mmdbot.commands.staff.CmdOldChannels
+     */
+    public static final Marker OLD_CHANNELS = MarkerFactory.getMarker("OldChannels");
 }

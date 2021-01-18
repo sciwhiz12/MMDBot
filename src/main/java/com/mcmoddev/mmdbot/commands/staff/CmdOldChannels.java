@@ -59,13 +59,13 @@ public final class CmdOldChannels extends Command {
 
 		guild.getTextChannels().stream()
 			.distinct()
-			.filter(channel -> toCheck.contains(channel.getName()))
-			.filter(channelIsAllowedByList(toCheck))
-			.map(channel -> new ChannelData(channel, OldChannelsHelper.getLastMessageTime(channel)))
+            .filter(channel -> guild.getSelfMember().hasAccess(channel))
+//			.filter(channelIsAllowedByList(toCheck))
+			.map(channel -> new ChannelData(channel, OldChannelsHelper.getLastMessageTime(channel.getIdLong())))
 			.forEach(channelData -> {
 				if (channelData.days > dayThreshold) {
 					embed.addField("#" + channelData.channel.getName(), String.valueOf(channelData.days), true);
-				} else if (channelData.days == -1) {
+				} else if (channelData.days == OldChannelsHelper.NO_MESSAGE_FOUND) {
 					embed.addField("#" + channelData.channel.getName(), "Never had a message", true);
 				}
 			});
