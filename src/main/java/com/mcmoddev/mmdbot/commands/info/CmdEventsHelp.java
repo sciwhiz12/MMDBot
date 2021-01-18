@@ -25,8 +25,8 @@ public final class CmdEventsHelp extends Command {
      */
     public CmdEventsHelp() {
         super();
-        name = "eventshelp";
-        aliases = new String[]{"events", "why-doesnt-my-event-handler-work"};
+        name = "events";
+        aliases = new String[]{"eventshelp", "why-doesnt-my-event-handler-work"};
         help = "Gives info on how to use forge event handlers.";
     }
 
@@ -35,7 +35,7 @@ public final class CmdEventsHelp extends Command {
      */
     @Override
     protected void execute(final CommandEvent event) {
-		if (!Utils.checkCommand(this, event)) return;
+        if (!Utils.checkCommand(this, event)) return;
         final EmbedBuilder embed = new EmbedBuilder();
         final TextChannel channel = event.getTextChannel();
 

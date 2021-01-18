@@ -21,13 +21,13 @@ public class CmdToggleEventPings extends Command {
      */
     public CmdToggleEventPings() {
         super();
-        name = "event-pings";
-        aliases = new String[]{"toggle-event-pings", "eventpings", "toggleeventpings"};
+        name = "eventpings";
+        aliases = new String[]{"toggle-event-pings", "event-pings", "toggleeventpings"};
         help = "Add or remove the Event Notifications role to get or stop getting pings about events in MMD.";
     }
 
     protected void execute(final CommandEvent event) {
-		if (!Utils.checkCommand(this, event)) return;
+        if (!Utils.checkCommand(this, event)) return;
         final TextChannel channel = event.getTextChannel();
         final Guild guild = event.getGuild();
         final Member member = event.getMember();

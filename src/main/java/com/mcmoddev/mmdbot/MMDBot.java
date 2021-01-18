@@ -4,6 +4,7 @@ import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.mcmoddev.mmdbot.commands.staff.CmdOldChannels;
 import com.mcmoddev.mmdbot.commands.fun.CmdCatFacts;
+import com.mcmoddev.mmdbot.commands.fun.CmdToggleEventPings;
 import com.mcmoddev.mmdbot.commands.fun.CmdToggleMcServerPings;
 import com.mcmoddev.mmdbot.commands.info.CmdBuild;
 import com.mcmoddev.mmdbot.commands.info.CmdEventsHelp;
@@ -13,7 +14,6 @@ import com.mcmoddev.mmdbot.commands.info.CmdJustAsk;
 import com.mcmoddev.mmdbot.commands.info.CmdMinecraftVersion;
 import com.mcmoddev.mmdbot.commands.info.CmdPaste;
 import com.mcmoddev.mmdbot.commands.info.CmdSearch;
-import com.mcmoddev.mmdbot.commands.fun.CmdToggleEventPings;
 import com.mcmoddev.mmdbot.commands.info.CmdXy;
 import com.mcmoddev.mmdbot.commands.info.server.CmdGuild;
 import com.mcmoddev.mmdbot.commands.info.server.CmdMe;
@@ -70,7 +70,7 @@ public final class MMDBot {
      */
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
     private static final Set<GatewayIntent> intents = new HashSet<>();
-	private static BotConfig config;
+    private static BotConfig config;
     private static JDA INSTANCE;
 
     static {
@@ -88,15 +88,16 @@ public final class MMDBot {
     private MMDBot() {
     }
 
-	/**
-	 * Returns the configuration of this bot.
-	 * @return The configuration of this bot
-	 */
-	public static BotConfig getConfig() {
-		return config;
-	}
+    /**
+     * Returns the configuration of this bot.
+     *
+     * @return The configuration of this bot
+     */
+    public static BotConfig getConfig() {
+        return config;
+    }
 
-	public static JDA getInstance() {
+    public static JDA getInstance() {
         return INSTANCE;
     }
 
@@ -107,14 +108,14 @@ public final class MMDBot {
         final Path configPath = Paths.get("mmdbot_config.toml");
         config = new BotConfig(configPath);
         if (config.isNewlyGenerated()) {
-        	LOGGER.warn("A new config file at {} has been generated. Please configure the bot and try again.", configPath);
-			System.exit(0);
-		} else if (config.getToken() == null) {
-        	LOGGER.error("No token is specified in the config. Please configure the bot and try again");
-		} else if (config.getGuildID() == 0L) {
-        	LOGGER.error("No guild ID is configured. Please configure the bot and try again.");
-        	System.exit(0);
-		}
+            LOGGER.warn("A new config file at {} has been generated. Please configure the bot and try again.", configPath);
+            System.exit(0);
+        } else if (config.getToken() == null) {
+            LOGGER.error("No token is specified in the config. Please configure the bot and try again");
+        } else if (config.getGuildID() == 0L) {
+            LOGGER.error("No guild ID is configured. Please configure the bot and try again.");
+            System.exit(0);
+        }
 
         try {
 
@@ -133,10 +134,10 @@ public final class MMDBot {
                     .addCommand(new CmdReadme())
                     .addCommand(new CmdRules())
                     .addCommand(new CmdCatFacts())
-                    .addCommand(new CmdSearch("Google", "https://www.google.com/search?q=", "goog"))
-                    .addCommand(new CmdSearch("Bing", "https://www.bing.com/search?q="))
-                    .addCommand(new CmdSearch("DuckDuckGo", "https://duckduckgo.com/?q=", "ddg"))
-                    .addCommand(new CmdSearch("LMGTFY", "https://lmgtfy.com/?q=", "let-me-google-that-for-you"))
+                    .addCommand(new CmdSearch("google", "https://www.google.com/search?q=", "goog"))
+                    .addCommand(new CmdSearch("bing", "https://www.bing.com/search?q="))
+                    .addCommand(new CmdSearch("duckduckgo", "https://duckduckgo.com/?q=", "ddg"))
+                    .addCommand(new CmdSearch("lmgtfy", "https://lmgtfy.com/?q=", "let-me-google-that-for-you"))
                     .addCommand(new CmdEventsHelp())
                     .addCommand(new CmdToggleMcServerPings())
                     .addCommand(new CmdToggleEventPings())

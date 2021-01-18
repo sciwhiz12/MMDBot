@@ -21,9 +21,9 @@ public class CmdToggleMcServerPings extends Command {
      */
     public CmdToggleMcServerPings() {
         super();
-        name = "toggle-mc-server-pings";
-        aliases = new String[]{"mc-server-pings", "toggle-mc-server-announcements", "mc-server-announcements"};
-        help = "Give/remove from yourself the public server players role.";
+        name = "serverpings";
+        aliases = new String[]{"toggle-mc-server-pings", "mc-server-pings", "toggle-mc-server-announcements", "mc-server-announcements"};
+        help = "Add or remove the public server player role from your user.";
     }
 
     /**
@@ -31,7 +31,7 @@ public class CmdToggleMcServerPings extends Command {
      */
     @Override
     protected void execute(final CommandEvent event) {
-		if (!Utils.checkCommand(this, event)) return;
+        if (!Utils.checkCommand(this, event)) return;
         final TextChannel channel = event.getTextChannel();
         final Guild guild = event.getGuild();
         final Member member = event.getMember();
