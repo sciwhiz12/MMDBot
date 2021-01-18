@@ -35,9 +35,13 @@ public class CmdUser extends Command {
      */
     @Override
     protected void execute(final CommandEvent event) {
-		if (!Utils.checkCommand(this, event)) return;
+        if (!Utils.checkCommand(this, event)) return;
         final TextChannel channel = event.getTextChannel();
         final Member member = Utils.getMemberFromString(event.getArgs(), event.getGuild());
+        if (member == null) {
+			channel.sendMessage(String.format("User %s not found.", event.getArgs())).queue();
+			return;
+		}
         final EmbedBuilder embed = createMemberEmbed(member);
         channel.sendMessage(embed.build()).queue();
     }

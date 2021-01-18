@@ -20,8 +20,8 @@ public final class CmdMinecraftVersion extends Command {
      */
     public CmdMinecraftVersion() {
         super();
-        this.name = "minecraftv";
-        aliases = new String[]{"minecraft", "mcv"};
+        this.name = "minecraft";
+        aliases = new String[]{"minecraftv", "mcv"};
         help = "Get the latest Minecraft versions";
     }
 
@@ -30,7 +30,7 @@ public final class CmdMinecraftVersion extends Command {
      */
     @Override
     protected void execute(final CommandEvent event) {
-		if (!Utils.checkCommand(this, event)) return;
+        if (!Utils.checkCommand(this, event)) return;
         final EmbedBuilder embed = new EmbedBuilder();
         final TextChannel channel = event.getTextChannel();
 
